@@ -8,16 +8,18 @@ type FriendRequestPayload struct {
 }
 
 type IncomingMessagePayload struct {
-	Type       string `json:"type"`
-	FromUserID string `json:"from_user_id"`
-	ToUserID   string `json:"to_user_id"`
-	RoomID     string `json:"room_id"`
-	Content    string `json:"content"`
+	Type         string `json:"type"`
+	FromUserID   string `json:"from_user_id"`
+	FromUsername string `json:"from_username"`
+	ToUserID     string `json:"to_user_id"`
+	RoomID       string `json:"room_id"`
+	Content      string `json:"content"`
 }
 
 type IncomingCallPayload struct {
-	Type       string `json:"type"`
-	FromUserID string `json:"from_user_id"`
-	ToUserID   string `json:"to_user_id"`
-	RoomID     string `json:"room_id"`
+	Type         string `json:"type"`
+	FromUserID   string `json:"from_user_id"`
+	FromUsername string `json:"from_username"`
+	ToUserID     string `json:"to_user_id"`
+	RoomID       string `json:"room_id"`
 }

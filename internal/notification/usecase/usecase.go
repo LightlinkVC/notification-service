@@ -92,9 +92,21 @@ func (uc *NotificationUsecase) preparePayload(payload map[string]interface{}, ms
 	case *entity.IncomingMessagePayload:
 		channel = entity.PersonalChannel(v.ToUserID)
 		v.Type = IncomingMessageNotificationType
+
+		senderUsername, err := uc.getUsernameByUserID(v.FromUserID)
+		if err != nil {
+			return nil, err
+		}
+		v.FromUsername = senderUsername
 	case *entity.IncomingCallPayload:
 		channel = entity.PersonalChannel(v.ToUserID)
 		v.Type = IncomingCallNotificationType
+
+		senderUsername, err := uc.getUsernameByUserID(v.FromUserID)
+		if err != nil {
+			return nil, err
+		}
+		v.FromUsername = senderUsername
 	default:
 		return nil, fmt.Errorf("unknown payload type: %T", v)
 	}
